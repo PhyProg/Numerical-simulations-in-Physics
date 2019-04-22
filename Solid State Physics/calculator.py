@@ -63,6 +63,6 @@ def plot_honeycomb_lattice(no_of_grid_points = 200, no_of_bins = 'auto'):
 
 
 if __name__ == "__main__":
-    plot_quadratic_lattice(no_of_grid_points = 6000, no_of_bins = 100000)
-    plot_honeycomb_lattice(no_of_grid_points = 6000, no_of_bins = 100000)
+    plot_quadratic_lattice(no_of_grid_points = 500, no_of_bins = 10000)
+    plot_honeycomb_lattice(no_of_grid_points = 500, no_of_bins = 10000)
 

@@ -19,7 +19,7 @@ def graphene_dispersion_relation(k_vector: tuple or list or np.ndarray,
     k_2 = k_vector[0] * delta_2[0] + k_vector[1] * delta_2[1]
     k_3 = k_vector[0] * delta_3[0] + k_vector[1] * delta_3[1]
 
-    return ground_level_energy - 2 * hopping_energy * (np.cos(k_1) + np.cos(k_2) + np.cos(k_3))
+    return hopping_energy * np.abs((np.exp(1j*k_1) + np.exp(1j*k_2) + np.exp(1j*k_3)))
 
 def quadratic_dispersion_relation(k_vector: tuple or list or np.ndarray,\
                                 ground_level_energy,\
@@ -31,12 +31,12 @@ def quadratic_dispersion_relation(k_vector: tuple or list or np.ndarray,\
     return ground_level_energy - 2 * hopping_energy * (np.sum(np.cos(k_vector * lattice_constant), axis = 0))
 
 def graphene_dispersion_calculator():
-    delta_1 = (.5, np.sqrt(3) / 2)
-    delta_2 = (.5, -np.sqrt(3) / 2)
-    delta_3 = (-.5, 0)
+    delta_1 = (np.sqrt(3) / 2, -.5)
+    delta_2 = (-np.sqrt(3) / 2, -.5)
+    delta_3 = (0, 1)
 
     ground_level_energy = 0
-    hopping_energy = .5
+    hopping_energy = 1.
 
     rel = Dispersion(graphene_dispersion_relation,\
                     ground_level_energy,\
